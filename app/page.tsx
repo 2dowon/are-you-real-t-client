@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import MbtiTestLinkButton from "./(home)/_components/MbtiTestLinkButton.client";
 import MainLogoImage from "/public/static/images/main_logo.png";
 
 const HomePage = () => {
@@ -18,9 +19,7 @@ const HomePage = () => {
       </div>
 
       <div className="bottom-[5rem] fixed flex-col flex gap-y-[1rem] w-full px-[3.4rem] pc:max-w-[50rem]">
-        <Button asChild variant="primary" size="lg">
-          <Link href="/test">MBTI 검증해보기</Link>
-        </Button>
+        <MbtiTestLinkButton />
         <Button asChild size="lg">
           <Link href="/community">토론하러 가기</Link>
         </Button>
