@@ -1,7 +1,11 @@
+import Link from "next/link";
+
 const TestPage = () => {
   return (
     <div>
-      <h1 className="text-h1 text-white">test page</h1>
+      <Link className="text-title text-white" href="/community">
+        커뮤니티
+      </Link>
     </div>
   );
 };

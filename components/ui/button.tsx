@@ -14,7 +14,7 @@ const buttonVariants = cva(
       size: {
         sm: "rounded-[0.4rem] py-[0.8rem] px-[1.6rem] text-label font-medium",
         md: "rounded-[0.8rem] p-[1.6rem] text-label font-medium",
-        lg: "rounded-[1.6rem] p-[1.6rem] text-button font-semibold",
+        lg: "rounded-[0.8rem] p-[1.6rem] text-button font-semibold",
       },
     },
     defaultVariants: {

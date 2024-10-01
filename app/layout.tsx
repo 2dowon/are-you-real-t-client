@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import KakaoScript from "@/components/KakaoScript.client";
 import type { Metadata } from "next";
-import Authentication from "../components/Authentication.client";
 import "./globals.css";
 
 declare global {
@@ -30,10 +29,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
       </head>
-      <body>
-        <Authentication />
-        {children}
-      </body>
+      <body>{children}</body>
       <KakaoScript />
     </html>
   );
