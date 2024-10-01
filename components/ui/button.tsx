@@ -3,30 +3,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-gray-10 text-white shadow-sm",
-        primary: "bg-primary text-white shadow-sm",
-        outline:
-          "border border-neutral-200 bg-white shadow-sm hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
-        secondary:
-          "bg-neutral-100 text-neutral-900 shadow-sm hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80",
-        ghost:
-          "hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
-        link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
+        primary:
+          "bg-primary text-white shadow-sm hover:bg-primary-active disabled:bg-primary-disabled disabled:text-[#F178B6]",
+        gray: "bg-gray-18 text-white shadow-sm hover:bg-gray-10 disabled:bg-gray-25 disabled:text-gray-60",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "rounded-md px-3 text-xs",
-        lg: "rounded-[1.6rem] p-[1.6rem] text-h2",
-        icon: "h-9 w-9",
+        sm: "rounded-[0.4rem] py-[0.8rem] px-[1.6rem] text-label font-medium",
+        md: "rounded-[0.8rem] p-[1.6rem] text-label font-medium",
+        lg: "rounded-[1.6rem] p-[1.6rem] text-button font-semibold",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "lg",
     },
   }
 );

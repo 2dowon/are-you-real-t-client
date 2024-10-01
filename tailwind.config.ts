@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         "gray-0": "#000000",
         "gray-10": "#191919",
+        "gray-18": "#2E2E2E",
         "gray-25": "#404040",
         "gray-60": "#93979B",
         "gray-90": "#E5E5E5",
@@ -22,9 +23,11 @@ const config: Config = {
         "primary-disabled": "#B53577",
       },
       fontSize: {
-        h1: ["3.4rem", { fontWeight: "600", letterSpacing: "-2%" }],
-        h2: ["2rem", { fontWeight: "600", letterSpacing: "-2%" }],
-        body1: ["1.3rem", { fontWeight: "400", letterSpacing: "-2%" }],
+        title: ["2.8rem", { lineHeight: "100%", letterSpacing: "-2%" }],
+        "title-question": ["2.4rem", { letterSpacing: "-2%" }],
+        button: ["2.4rem", { letterSpacing: "-2%" }],
+        detail: ["2rem", { letterSpacing: "-2%" }],
+        label: ["1.6rem", { letterSpacing: "-2%" }],
       },
       screens: {
         pc: "500px",

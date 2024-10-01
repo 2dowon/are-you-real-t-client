@@ -20,7 +20,7 @@ const HomePage = () => {
 
       <div className="bottom-[5rem] fixed flex-col flex gap-y-[1rem] w-full px-[3.4rem] pc:max-w-[50rem]">
         <MbtiTestLinkButton />
-        <Button asChild size="lg">
+        <Button asChild variant="gray" size="lg">
           <Link href="/community">토론하러 가기</Link>
         </Button>
       </div>

@@ -1,4 +1,4 @@
-import TesterLoginPage from "./LoginPage.client";
+import TesterLoginPage from "./TesterLoginPage.client";
 
 const LoginPage = () => {
   return <TesterLoginPage />;
