@@ -1,10 +1,15 @@
+import { TMbtiType } from "@/utils/constants/meta.const";
+
 export interface IQuestion {
   id: string;
   content: string;
   answerList: IAnswer[];
+  type: TMbtiType;
+  answerCount: number;
+  commentCount: number;
 }
 
-interface IAnswer {
+export interface IAnswer {
   id: string;
   content: string;
   tag: string;
@@ -23,6 +28,9 @@ export const getQuestions = async () => {
   return [
     {
       id: "1",
+      type: "energy",
+      answerCount: 1000,
+      commentCount: 100,
       content: "평생 취미를 하나만 가질 수 있다면?",
       answerList: [
         {
@@ -39,6 +47,9 @@ export const getQuestions = async () => {
     },
     {
       id: "2",
+      type: "information",
+      answerCount: 2000,
+      commentCount: 150,
       content: "인생이 막막할때",
       answerList: [
         {

@@ -1,48 +1,31 @@
+import { getQuestions } from "@/hooks/api/questions/useQuestions";
 import QuestionItem from "./_components/QuestionItem";
 
-const CommunityPage = () => {
+const CommunityPage = async () => {
+  const questionList = await getQuestions();
+
   return (
     <div>
-      <h1 className="text-white text-title-question mb-[1rem]">
+      <h1 className="text-white text-title-question mt-[3.2rem] mb-[2.4rem] mx-[2rem]">
         토론하러 가기
       </h1>
 
       <div className="mx-[2rem] flex flex-col gap-y-[2.4rem]">
-        <QuestionItem
-          postId={1}
-          type="S/N"
-          questionTitle="질문 내용"
-          answerList={["A", "B"]}
-          answerCount={1000}
-          commentCount={100}
-        />
-
-        <QuestionItem
-          postId={1}
-          type="S/N"
-          questionTitle="질문 내용"
-          answerList={["A", "B"]}
-          answerCount={1000}
-          commentCount={100}
-        />
-
-        <QuestionItem
-          postId={1}
-          type="S/N"
-          questionTitle="질문 내용"
-          answerList={["A", "B"]}
-          answerCount={1000}
-          commentCount={100}
-        />
-
-        <QuestionItem
-          postId={1}
-          type="S/N"
-          questionTitle="질문 내용"
-          answerList={["A", "B"]}
-          answerCount={1000}
-          commentCount={100}
-        />
+        {questionList.map(
+          ({ id, type, content, answerList, answerCount, commentCount }) => {
+            return (
+              <QuestionItem
+                key={`question_${id}`}
+                postId={Number(id)}
+                type={type}
+                questionTitle={content}
+                answerList={answerList}
+                answerCount={answerCount}
+                commentCount={commentCount}
+              />
+            );
+          }
+        )}
       </div>
     </div>
   );
