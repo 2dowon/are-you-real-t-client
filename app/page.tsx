@@ -1,24 +1,36 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import HomeImage from "/public/static/images/home_image.png";
+import HomeBGImage from "/public/static/images/home_bg.png";
+import HomeLogoImage from "/public/static/images/home_logo.png";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black relative">
-      <div className="relative w-full h-full pc:w-[50rem]">
+    <div className="flex flex-col items-center justify-center w-full h-full overflow-hidden relative">
+      <div className="relative w-[42rem] h-[60rem]">
         <Image
-          src={HomeImage}
-          alt="Home Image"
+          src={HomeBGImage}
+          alt="Home Background Image"
           priority
           fill
-          className="object-contain"
+          className="object-cover"
         />
+      </div>
+      <div className="absolute top-[calc(100vh_/_15)]">
+        <div className="relative w-[70vw] h-[50rem]">
+          <Image
+            src={HomeLogoImage}
+            alt="Home Logo Image"
+            priority
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
 
       <div className="bottom-[5rem] fixed flex-col flex gap-y-[1rem] w-full px-[3.4rem] pc:max-w-[50rem]">
         <Button asChild variant="primary" size="lg">
-          <Link href={`/login?redirectURI=${encodeURIComponent("/test")}`}>
+          <Link href={`/login?redirectURI=${encodeURIComponent("/questions")}`}>
             MBTI 검증해보기
           </Link>
         </Button>
