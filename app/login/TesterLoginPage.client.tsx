@@ -112,7 +112,7 @@ const TesterLoginPage = () => {
       <Button
         variant="primary"
         size="lg"
-        className="absolute bottom-[2rem] w-[calc(100%-4rem)]"
+        className="absolute bottom-[2rem] w-[calc(100%-4rem)] pc:max-w-[46rem]"
         disabled={
           !energyType || !informationType || !decisionType || !lifeStyleType
         }

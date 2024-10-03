@@ -7,7 +7,7 @@ import HomeLogoImage from "/public/static/images/home_logo.png";
 const HomePage = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full overflow-hidden relative">
-      <div className="relative w-[42rem] h-[60rem]">
+      <div className="relative w-screen h-screen pc:max-w-[50rem]">
         <Image
           src={HomeBGImage}
           alt="Home Background Image"
@@ -17,7 +17,7 @@ const HomePage = () => {
         />
       </div>
       <div className="absolute top-[calc(100vh_/_15)]">
-        <div className="relative w-[70vw] h-[50rem]">
+        <div className="relative w-[70vw] h-[60vh] pc:w-[40rem] pc:h-[70rem]">
           <Image
             src={HomeLogoImage}
             alt="Home Logo Image"
