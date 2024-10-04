@@ -4,6 +4,7 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import TLogo from "../icon/TLogo";
 
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
@@ -12,7 +13,7 @@ const Progress = React.forwardRef<
   <ProgressPrimitive.Root
     ref={ref}
     className={cn(
-      "relative h-[0.8rem] w-full overflow-hidden rounded-full bg-gray-90",
+      "relative h-[0.8rem] w-full overflow-hidden rounded-full bg-gray-200",
       className
     )}
     {...props}
@@ -21,6 +22,12 @@ const Progress = React.forwardRef<
       className="h-full w-full flex-1 bg-primary transition-all rounded-full"
       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
     />
+    <div
+      className="transition-all"
+      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+    >
+      <TLogo />
+    </div>
   </ProgressPrimitive.Root>
 ));
 Progress.displayName = ProgressPrimitive.Root.displayName;

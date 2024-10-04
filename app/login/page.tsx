@@ -3,10 +3,8 @@ import TesterLoginPage from "./TesterLoginPage.client";
 
 const LoginPage = () => {
   return (
-    <div>
-      <div className="px-[2rem] my-[3.2rem]">
-        <p className="text-detail text-white">나의 MBTI는?</p>
-      </div>
+    <div className="px-[2.5rem]">
+      <p className="text-title-sb-20 my-[3.2rem]">나의 MBTI는?</p>
 
       <Suspense>
         <TesterLoginPage />

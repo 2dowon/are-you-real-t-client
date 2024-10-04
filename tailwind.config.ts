@@ -11,23 +11,88 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "gray-0": "#000000",
-        "gray-10": "#191919",
-        "gray-18": "#2E2E2E",
-        "gray-25": "#404040",
-        "gray-60": "#93979B",
-        "gray-90": "#E5E5E5",
         "gray-100": "#FFFFFF",
+        "gray-200": "#D4D4D8",
+        "gray-400": "#A1A1AA",
+        "gray-600": "#6C6C71",
+        "gray-700": "#3F3F46",
+        "gray-800": "#27272A",
+        "gray-900": "#18181B",
+        black: "#000000",
         primary: "#FF53AB",
         "primary-active": "#FF1E91",
-        "primary-disabled": "#B53577",
+        "primary-disabled-100": "#F178B6",
+        "primary-disabled-200": "#B53577",
       },
       fontSize: {
-        title: ["2.8rem", { lineHeight: "100%", letterSpacing: "-2%" }],
-        "title-question": ["2.4rem", { letterSpacing: "-2%" }],
-        button: ["2.4rem", { letterSpacing: "-2%" }],
-        detail: ["2rem", { letterSpacing: "-2%" }],
-        label: ["1.6rem", { letterSpacing: "-2%" }],
+        "title-sb-32": [
+          "3.2rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "title-sb-28": [
+          "2.8rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "title-r-28": [
+          "2.8rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "title-sb-22": [
+          "2.2rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "title-sb-20": [
+          "2rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "title-m-16": [
+          "1.6rem",
+          { fontWeight: 500, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "button-sb-24": [
+          "2.4rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "button-sb-14": [
+          "1.4rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-sb-20": [
+          "2rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-r-20": [
+          "2rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-sb-16": [
+          "1.6rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-r-16": [
+          "1.6rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-sb-14": [
+          "1.4rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "detail-r-14": [
+          "1.4rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "label-sb-16": [
+          "1.6rem",
+          { fontWeight: 600, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "label-r-16": [
+          "1.6rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
+        "reply-r-14": [
+          "1.4rem",
+          { fontWeight: 400, lineHeight: "150%", letterSpacing: "0%" },
+        ],
       },
       screens: {
         pc: "500px",

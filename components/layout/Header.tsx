@@ -1,13 +1,13 @@
 import Link from "next/link";
-import TextLogo from "../icon/TextLogo";
+import Home from "../icon/Home";
 import StickyWrapper from "../wrapper/StickyWrapper.client";
 
 const Header = () => {
   return (
     <StickyWrapper>
-      <header className="p-[2.4rem] border-b border-gray-25 flex items-center bg-gray-0">
+      <header className="flex w-full items-center justify-center border-b border-gray-800 bg-black py-[0.6rem]">
         <Link href="/">
-          <TextLogo className="w-[12rem] h-[2rem]" />
+          <Home className="h-[4.4rem] w-[4.4rem] p-[1rem]" />
         </Link>
       </header>
     </StickyWrapper>

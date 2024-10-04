@@ -38,10 +38,8 @@ const TesterLoginPage = () => {
   };
 
   return (
-    <div className="px-[2rem]">
-      <p className="text-gray-100 font-semibold mb-[0.8rem] text-label">
-        MBTI를 선택해 주세요!
-      </p>
+    <>
+      <p className="text-label-sb-16 mb-[1rem]">MBTI를 선택해 주세요!</p>
 
       <div className="grid grid-cols-4 gap-x-[1.6rem]">
         {[
@@ -75,7 +73,7 @@ const TesterLoginPage = () => {
           },
         ].map(({ key, typeList, onClick }) => {
           return (
-            <div key={`mbti_${key}`} className="bg-gray-25 rounded-[1rem]">
+            <div key={`mbti_${key}`} className="rounded-[1rem] bg-gray-700">
               {typeList.map((type) => {
                 let isSelected = false;
                 if (key === "energy") {
@@ -91,10 +89,10 @@ const TesterLoginPage = () => {
                 return (
                   <div
                     key={`mbti_type_${type}`}
-                    className={`text-detail font-semibold text-center py-[2rem] rounded-[1rem] cursor-pointer ${
+                    className={`text-detail-sb-20 cursor-pointer rounded-[1rem] py-[2rem] text-center ${
                       isSelected
-                        ? "bg-gray-60 text-gray-100 font-bold"
-                        : "bg-gray-25 text-gray-60"
+                        ? "bg-gray-400 text-gray-100"
+                        : "bg-gray-700 text-gray-400"
                     }`}
                     onClick={() => {
                       onClick(type);
@@ -112,7 +110,7 @@ const TesterLoginPage = () => {
       <Button
         variant="primary"
         size="lg"
-        className="absolute bottom-[2rem] w-[calc(100%-4rem)] pc:max-w-[46rem]"
+        className="pc:max-w-[46rem] absolute bottom-[2rem] w-[calc(100%-4rem)]"
         disabled={
           !energyType || !informationType || !decisionType || !lifeStyleType
         }
@@ -120,7 +118,7 @@ const TesterLoginPage = () => {
       >
         입력하기
       </Button>
-    </div>
+    </>
   );
 };
 

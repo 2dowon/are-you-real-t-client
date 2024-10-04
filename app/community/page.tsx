@@ -6,13 +6,13 @@ const CommunityPage = async () => {
 
   return (
     <div>
-      <h1 className="text-white text-title-question mt-[3.2rem] mb-[2.4rem] mx-[2rem]">
+      <h1 className="text-title-sb-20 mx-[2rem] mb-[2.4rem] mt-[3.2rem] text-white">
         토론하러 가기
       </h1>
 
-      <div className="mx-[2rem] flex flex-col gap-y-[2.4rem]">
+      <div className="mx-[2rem] mb-[10rem] flex flex-col gap-y-[2.4rem]">
         {questionList.map(
-          ({ id, type, content, answerList, answerCount, commentCount }) => {
+          ({ id, type, content, answerList, voteCount, commentCount }) => {
             return (
               <QuestionItem
                 key={`question_${id}`}
@@ -20,7 +20,7 @@ const CommunityPage = async () => {
                 type={type}
                 questionTitle={content}
                 answerList={answerList}
-                answerCount={answerCount}
+                voteCount={voteCount}
                 commentCount={commentCount}
               />
             );

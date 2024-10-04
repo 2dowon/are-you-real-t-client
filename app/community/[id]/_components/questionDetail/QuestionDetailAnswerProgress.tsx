@@ -12,16 +12,16 @@ const QuestionDetailAnswerProgress = ({
   const { typeList } = mbtiTypeMetaMap[type];
 
   return (
-    <div className="rounded-[0.8rem] relative h-[5.6rem] w-full bg-gray-10">
-      <div className="flex w-full justify-between px-[2rem] h-full items-center">
+    <div className="relative h-[4.8rem] w-full rounded-[0.8rem] bg-gray-900">
+      <div className="flex h-full w-full items-center justify-between px-[2rem]">
         {typeList.map((type, index) => {
           const percentage = tagPercentageMap[type];
 
           return (
-            <div className="text-label z-10 flex items-center gap-x-[1rem]">
-              {index === 1 && <p>{percentage}%</p>}
-              {type}
-              {index === 0 && <p>{percentage}%</p>}
+            <div key={type} className="z-10 flex items-center gap-x-[1rem]">
+              {index === 1 && <p className="text-label-r-16">{percentage}%</p>}
+              <p className="text-detail-r-20">{type}</p>
+              {index === 0 && <p className="text-label-r-16">{percentage}%</p>}
             </div>
           );
         })}
@@ -32,10 +32,14 @@ const QuestionDetailAnswerProgress = ({
         return (
           <div
             key={type}
-            className={`h-full rounded-[0.8rem] absolute top-0 ${
+            className={`absolute top-0 h-full rounded-[0.8rem] ${
               index === 0 ? "left-0" : "right-0"
             } ${
-              percentage >= 50 ? (isSelected ? "bg-primary" : "bg-gray-25") : ""
+              percentage >= 50
+                ? isSelected
+                  ? "bg-primary"
+                  : "bg-gray-800"
+                : ""
             }`}
             style={{ width: `${percentage}%` }}
           />

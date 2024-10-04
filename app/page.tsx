@@ -6,8 +6,8 @@ import HomeLogoImage from "/public/static/images/home_logo.png";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full overflow-hidden relative">
-      <div className="relative w-screen h-screen pc:max-w-[50rem]">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden">
+      <div className="pc:max-w-[50rem] relative h-screen w-screen">
         <Image
           src={HomeBGImage}
           alt="Home Background Image"
@@ -17,7 +17,7 @@ const HomePage = () => {
         />
       </div>
       <div className="absolute top-[calc(100vh_/_15)]">
-        <div className="relative w-[70vw] h-[60vh] pc:w-[40rem] pc:h-[70rem]">
+        <div className="pc:w-[40rem] pc:h-[calc(100vh/1.5)] relative h-[60vh] w-[70vw]">
           <Image
             src={HomeLogoImage}
             alt="Home Logo Image"
@@ -28,7 +28,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="bottom-[5rem] fixed flex-col flex gap-y-[1rem] w-full px-[3.4rem] pc:max-w-[50rem]">
+      <div className="pc:max-w-[50rem] fixed bottom-[5rem] flex w-full flex-col gap-y-[1.6rem] px-[3.5rem]">
         <Button asChild variant="primary" size="lg">
           <Link href={`/login?redirectURI=${encodeURIComponent("/questions")}`}>
             MBTI 검증해보기

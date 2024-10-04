@@ -1,30 +1,30 @@
 import Caret from "@/components/icon/Caret";
-import { getQuestion } from "@/hooks/api/question/useQuestion";
+import Link from "next/link";
 import CommentSection from "./_components/comment/CommentSection";
-import QuestionDetailSection from "./_components/questionDetail/QuestionDetailSection";
+import QuestionDetailSection from "./_components/questionDetail/QuestionDetailSection.client";
 
 interface ICommunityQuestionDetailPageProps {
   params: { id: string };
 }
 
-const CommunityQuestionDetailPage = async ({
+const CommunityQuestionDetailPage = ({
   params: { id },
 }: ICommunityQuestionDetailPageProps) => {
-  const question = await getQuestion({ questionId: Number(id) });
-
   return (
-    <div className="pb-[10rem] px-[2rem]">
-      <div className="flex items-center gap-x-[1rem] py-[2rem]">
-        <Caret />
-        <p className="text-label">다른 질문 보기</p>
+    <div className="px-[2rem] pb-[10rem]">
+      <Link href="/community">
+        <div className="flex items-center gap-x-[1rem] py-[2rem]">
+          <Caret />
+          <p className="text-detail-r-16">다른 질문 보기</p>
+        </div>
+      </Link>
+
+      <div className="pb-[1.6rem]">
+        <QuestionDetailSection questionId={id} />
       </div>
 
-      <div className="pb-[1rem]">
-        <QuestionDetailSection question={question} />
-      </div>
-
-      <div className="border-t border-gray-25 py-[2rem]">
-        <CommentSection />
+      <div className="border-t border-gray-800 py-[2.4rem]">
+        <CommentSection questionId={id} />
       </div>
     </div>
   );

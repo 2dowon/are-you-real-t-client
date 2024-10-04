@@ -1,8 +1,8 @@
-import { getQuestions } from "@/hooks/api/questions/useQuestions";
+import { getQuestionsTemp } from "@/hooks/api/questionsTemp/useQuestionsTemp";
 import QuestionsClientPage from "./QuestionsPage.client";
 
 const QuestionsPage = async () => {
-  const questionList = await getQuestions();
+  const questionList = await getQuestionsTemp();
 
   return (
     <div>

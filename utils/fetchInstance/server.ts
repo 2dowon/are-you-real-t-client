@@ -1,6 +1,6 @@
 "use server";
 
-import { BASE_URL } from "../constants/url.const";
+import { BASE_API_URL } from "../constants/url.const";
 import { FetchRequestConfig, customFetch } from "../functions/customFetch.util";
 
 export const areYouRealTServiceServerFetchInstance = <TResponse>(
@@ -9,6 +9,7 @@ export const areYouRealTServiceServerFetchInstance = <TResponse>(
 ) =>
   customFetch<TResponse>({
     path,
-    baseURL: `${BASE_URL}`,
+    baseURL: `${BASE_API_URL}`,
+    headers: { "Content-Type": "application/json" },
     ...fetchRequestConfig,
   });
