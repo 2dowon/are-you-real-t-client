@@ -51,7 +51,7 @@ const ResultPage = async ({ params: { id } }: IResultPageProps) => {
             </div>
           </Link>
         </Button>
-        <KakaoShareButton resultId={id} />
+        <KakaoShareButton resultId={id} description={description} />
       </div>
 
       <div className="border-t border-gray-800 py-[3.2rem]">

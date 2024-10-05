@@ -1,9 +1,16 @@
 "use client";
 
+import { DEFAULT_OG_IMAGE } from "@/utils/constants/metaData.const";
 import { BASE_URL } from "@/utils/constants/url.const";
 import Kakao from "./icon/Kakao";
 
-const KakaoShareButton = ({ resultId }: { resultId: string }) => {
+const KakaoShareButton = ({
+  resultId,
+  description,
+}: {
+  resultId: string;
+  description: string;
+}) => {
   const handleKakaoShareButtonClick = () => {
     const shareUrl = `${BASE_URL}/result/${resultId}`;
 
@@ -11,9 +18,11 @@ const KakaoShareButton = ({ resultId }: { resultId: string }) => {
       window.Kakao.Link.sendDefault({
         objectType: "feed",
         content: {
-          title: "너 진짜 T야?",
-          description: "비사이드 포텐데이 409 - 가짜엔프피팀 프로젝트",
-          imageUrl: "공유할 이미지 URL",
+          title: "[검증 결과]",
+          description,
+          imageWidth: 800,
+          imageHeight: 400,
+          imageUrl: DEFAULT_OG_IMAGE,
           link: {
             mobileWebUrl: shareUrl,
             webUrl: shareUrl,

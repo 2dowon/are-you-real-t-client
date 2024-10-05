@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import KakaoScript from "@/components/KakaoScript.client";
 import { Toaster } from "@/components/ui/sonner";
-import type { Metadata } from "next";
+import { getMetadata } from "@/utils/functions/metaData.util";
 import "./globals.css";
 
 declare global {
@@ -10,10 +10,7 @@ declare global {
   }
 }
 
-export const metadata: Metadata = {
-  title: "너 진짜 T야?",
-  description: "",
-};
+export const metadata = getMetadata();
 
 export default function RootLayout({
   children,
