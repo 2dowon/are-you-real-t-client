@@ -3,6 +3,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetQuestionsId } from "@/hooks/api/questions/useQuestionsId.client";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import QuestionDetailAnswerSection from "./QuestionDetailAnswerSection.client";
@@ -20,6 +21,7 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
   const {
     type,
     content = "",
+    imageUrl = "",
     answerList = [],
     voteCount = 0,
     votedAnswerId,
@@ -45,6 +47,14 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
   return (
     <div>
       <p className="text-title-sb-22 mb-[2rem]">{content}</p>
+      <div className="relative mx-auto mb-[2.4rem] h-[16rem] w-[32rem]">
+        <Image
+          src={imageUrl}
+          alt="mbti question"
+          fill
+          className="object-contain"
+        />
+      </div>
 
       <QuestionDetailAnswerSection
         type={type}

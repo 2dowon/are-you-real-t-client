@@ -46,12 +46,12 @@ const ResultMbtiCard = ({
                 isChanged ? "bg-primary" : "bg-gray-800 text-gray-200"
               }`}
             >
-              <p className="text-detail-r-16">{prevType}</p>
+              <p className="text-detail-r-20">{prevType}</p>
               <DoubleCaret
                 className="mx-[0.5rem]"
                 color={isChanged ? "white" : "#A1A1AA"}
               />
-              <p className="text-detail-sb-16">{nextType}</p>
+              <p className="text-detail-sb-20">{nextType}</p>
             </div>
           );
         })}

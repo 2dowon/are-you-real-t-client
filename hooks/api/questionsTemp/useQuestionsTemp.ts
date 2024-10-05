@@ -1,16 +1,9 @@
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
+import { IQuestion } from "../questions/useQuestions";
 
-export interface IQuestionTemp {
-  id: string;
-  content: string;
-  imageUrl: string;
-  answerList: IAnswerTemp[];
-}
-
-export interface IAnswerTemp {
-  id: string;
-  content: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface IQuestionTemp
+  extends Omit<IQuestion, "type" | "voteCount" | "commentCount"> {}
 
 export const getQuestionsTemp = async () => {
   const response = await areYouRealTServiceServerFetchInstance<IQuestionTemp[]>(

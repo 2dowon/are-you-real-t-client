@@ -66,19 +66,20 @@ const QuestionDetailAnswerSection = ({
         const { total, tag1, tag2 } = countMeta ?? {};
         const isSelected = votedAnswerId === answerId;
 
-        // TODO: 확인
-        if (!countMeta) {
-          return null;
-        }
-
         return (
           <div
             key={`question_detail_answer_${answerId}`}
             className="text-label"
           >
-            <div className="text-detail-sb-16 mb-[0.8rem] flex items-center gap-x-[0.5rem]">
-              <p>{content}</p>
-              {votedAnswerId && <p>({total}명)</p>}
+            <div
+              className={`text-detail-sb-16 mb-[0.8rem] ${
+                votedAnswerId && !isSelected ? "text-gray-600" : ""
+              }`}
+            >
+              <span>{content}</span>
+              {votedAnswerId && (
+                <span className="ml-[0.5rem]">({total}명)</span>
+              )}
             </div>
 
             {votedAnswerId ? (

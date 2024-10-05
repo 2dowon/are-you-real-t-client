@@ -14,7 +14,7 @@ import { toast } from "sonner";
 const QUESTION_LIST_COUNT = 12;
 
 interface ISelectedQuestionIdAnswerIdMap {
-  [questionId: string]: string;
+  [questionId: number]: number;
 }
 
 const QuestionsClientPage = ({
@@ -99,9 +99,9 @@ const QuestionsClientPage = ({
         </div>
 
         <div className="flex flex-col items-center">
-          <p className="text-title-sb-22 text-white">{content}</p>
+          <p className="text-title-sb-22 mb-[2rem] text-white">{content}</p>
 
-          <div className="relative mb-[1rem] h-[15rem] w-[15rem]">
+          <div className="relative mb-[1.6rem] h-[16rem] w-[32rem]">
             <Image
               src={imageUrl}
               alt="mbti question"
@@ -126,11 +126,13 @@ const QuestionsClientPage = ({
                   onClick={() => {
                     setSelectedQuestionIdAnswerIdMap((prevAnswers) => ({
                       ...prevAnswers,
-                      [questionId as string]: answerId,
+                      [questionId]: answerId,
                     }));
 
                     if (currentIndex < QUESTION_LIST_COUNT) {
-                      setCurrentIndex(currentIndex + 1);
+                      setTimeout(() => {
+                        setCurrentIndex(currentIndex + 1);
+                      }, 300);
                     }
                   }}
                 >

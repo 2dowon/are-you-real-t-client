@@ -3,6 +3,7 @@ import QuestionItem from "./_components/QuestionItem";
 
 const CommunityPage = async () => {
   const questionList = await getQuestions();
+  console.log("## questionList", questionList);
 
   return (
     <div>

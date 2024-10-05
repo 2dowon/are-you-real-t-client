@@ -4,6 +4,7 @@ import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/ser
 export interface IQuestion {
   id: number;
   content: string;
+  imageUrl: string;
   answerList: IAnswer[];
   type: TMbtiType;
   voteCount: number;
