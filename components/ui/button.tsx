@@ -13,7 +13,7 @@ const buttonVariants = cva(
       },
       size: {
         sm: "rounded-[0.4rem] py-[0.8rem] px-[1.6rem] text-button-sb-14",
-        md: "rounded-[0.8rem] p-[1.6rem] text-detail-r-20",
+        md: "rounded-[0.8rem] p-[1.6rem] text-label-sb-16",
         lg: "rounded-[0.8rem] p-[1.6rem] text-button-sb-24",
       },
     },

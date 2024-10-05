@@ -3,7 +3,9 @@ import Comment from "./Comment";
 import CommentInput from "./CommentInput.client";
 
 const CommentSection = async ({ questionId }: { questionId: string }) => {
-  const { count, commentList = [] } = await getComments({ questionId: 1 });
+  const { count, commentList = [] } = await getComments({
+    questionId: parseInt(questionId),
+  });
 
   return (
     <>

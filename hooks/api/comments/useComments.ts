@@ -24,14 +24,9 @@ const getCommentsApiTagKey = "getComments";
 export const getComments = async (params: ICommentsParams) => {
   const { questionId } = params;
 
-  //   const response =
-  //     await areYouRealTServiceServerFetchInstance<ICommentResponse>("/comments", {
-  //       method: "GET",
-  //       query: { questionId },
-  //     });
   const response =
     await areYouRealTServiceServerFetchInstance<ICommentResponse>(
-      "/questions/comment/t",
+      "/questions/comment",
       {
         method: "GET",
         query: { questionId },

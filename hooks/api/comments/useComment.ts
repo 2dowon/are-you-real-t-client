@@ -13,7 +13,7 @@ interface ICommentResponse {
 }
 
 interface ICommentPayload {
-  questionId: string;
+  questionId: number;
   testerId: string;
   mbti: string;
   content: string;

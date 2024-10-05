@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { useGetQuestionsId } from "@/hooks/api/questions/useQuestionsId.client";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
 import { useRouter } from "next/navigation";
@@ -35,6 +36,10 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
 
   if (!isLoading && !question) {
     return null;
+  }
+
+  if (isLoading) {
+    return <Skeleton className="h-[40rem] w-full rounded-[1rem]" />;
   }
 
   return (

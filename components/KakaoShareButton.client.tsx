@@ -1,16 +1,11 @@
 "use client";
 
 import { BASE_URL } from "@/utils/constants/url.const";
-import { usePathname } from "next/navigation";
+import Kakao from "./icon/Kakao";
 
-const KakaoShareButton = () => {
-  const pathname = usePathname();
-
+const KakaoShareButton = ({ resultId }: { resultId: string }) => {
   const handleKakaoShareButtonClick = () => {
-    let shareUrl = BASE_URL;
-    if (pathname !== "/") {
-      shareUrl += pathname;
-    }
+    const shareUrl = `${BASE_URL}/result/${resultId}`;
 
     if (window.Kakao) {
       window.Kakao.Link.sendDefault({
@@ -30,9 +25,10 @@ const KakaoShareButton = () => {
 
   return (
     <button
-      className="bg-yellow-200 p-[1rem] rounded-lg"
+      className="text-label-sb-16 flex w-full justify-center rounded-[0.8rem] bg-[#FAE100] p-[1.6rem] text-[#391B1B]"
       onClick={handleKakaoShareButtonClick}
     >
+      <Kakao className="mr-[0.8rem]" />
       카카오톡 공유하기
     </button>
   );

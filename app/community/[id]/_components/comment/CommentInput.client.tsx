@@ -7,6 +7,7 @@ import { revalidateGetCommentsApiTag } from "@/hooks/api/comments/useComments";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState, useTransition } from "react";
+import { toast } from "sonner";
 
 const CommentInput = ({ questionId }: { questionId: string }) => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const CommentInput = ({ questionId }: { questionId: string }) => {
 
     startTransition(async () => {
       const response = await postComment({
-        questionId,
+        questionId: parseInt(questionId),
         testerId,
         mbti: testerMBTI,
         content: textareaValue,
@@ -44,9 +45,9 @@ const CommentInput = ({ questionId }: { questionId: string }) => {
         await revalidateGetCommentsApiTag();
       }
       if (isError) {
-        // toast.error(
-        //   "댓글 작성에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요.",
-        // );
+        toast.error(
+          "댓글 작성에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요."
+        );
       }
     });
   };

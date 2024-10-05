@@ -8,6 +8,7 @@ import { TMbtiType } from "@/utils/constants/meta.const";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
+import { toast } from "sonner";
 import QuestionDetailAnswerProgress from "./QuestionDetailAnswerProgress";
 
 const QuestionDetailAnswerSection = ({
@@ -18,7 +19,7 @@ const QuestionDetailAnswerSection = ({
 }: {
   questionId: string;
   type: TMbtiType;
-  votedAnswerId: string | null;
+  votedAnswerId: number | null;
   answerList: IAnswerDetail[];
 }) => {
   const router = useRouter();
@@ -28,7 +29,7 @@ const QuestionDetailAnswerSection = ({
 
   const [isPending, startTransition] = useTransition();
 
-  const handleAnswerClick = (answerId: string) => {
+  const handleAnswerClick = (answerId: number) => {
     if (!testerId) {
       router.push(
         `/login?redirectURI=${encodeURIComponent(`/community/${questionId}`)}`
@@ -48,15 +49,11 @@ const QuestionDetailAnswerSection = ({
       });
       const { isSuccess, isError } = response ?? {};
 
-      console.log("## response", response);
-
       if (isSuccess) {
         queryClient.invalidateQueries({ queryKey: ["getQuestionsIdApi"] });
       }
       if (isError) {
-        // toast.error(
-        //   "댓글 작성에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요.",
-        // );
+        toast.error("투표에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요.");
       }
     });
   };
@@ -64,11 +61,13 @@ const QuestionDetailAnswerSection = ({
   return (
     <div className="space-y-[3rem]">
       {answerList.map(({ id: answerId, content, countMeta }) => {
-        const { total, tag1, tag2 } = countMeta;
+        const { total, tag1, tag2 } = countMeta ?? {};
         const isSelected = votedAnswerId === answerId;
 
-        const { tag: tag1Name, count: tag1Count } = tag1;
-        const { tag: tag2Name, count: tag2Count } = tag2;
+        // TODO: 확인
+        if (!countMeta) {
+          return null;
+        }
 
         return (
           <div
@@ -84,10 +83,9 @@ const QuestionDetailAnswerSection = ({
               <QuestionDetailAnswerProgress
                 isSelected={isSelected}
                 type={type}
-                tagPercentageMap={{
-                  [tag1Name]: (tag1Count / total) * 100,
-                  [tag2Name]: (tag2Count / total) * 100,
-                }}
+                totalCount={total!}
+                tag1={tag1!}
+                tag2={tag2!}
               />
             ) : (
               <Button

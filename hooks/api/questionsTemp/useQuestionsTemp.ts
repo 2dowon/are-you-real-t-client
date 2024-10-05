@@ -1,10 +1,9 @@
-import { TMbtiType } from "@/utils/constants/meta.const";
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
 
 export interface IQuestionTemp {
   id: string;
-  type: TMbtiType;
   content: string;
+  imageUrl: string;
   answerList: IAnswerTemp[];
 }
 

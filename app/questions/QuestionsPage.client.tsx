@@ -3,11 +3,13 @@
 import CustomProgress from "@/components/CustomProgress";
 import Caret from "@/components/icon/Caret";
 import { Button } from "@/components/ui/button";
+import { postQuestionsResult } from "@/hooks/api/questions/useQuestionsResult";
 import { IQuestionTemp } from "@/hooks/api/questionsTemp/useQuestionsTemp";
-import { getQuestionsTest } from "@/hooks/api/questionsTest/useQuestionsTest";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 
 // TODO: 12로 수정 필요
 const QUESTION_LIST_COUNT = 4;
@@ -30,6 +32,7 @@ const QuestionsClientPage = ({
   const {
     id: questionId,
     content,
+    imageUrl = "",
     answerList,
   } = questionList.at(currentIndex - 1) ?? {};
 
@@ -39,22 +42,35 @@ const QuestionsClientPage = ({
   const [isPending, startTransition] = useTransition();
 
   const handleLastQuestionClick = () => {
-    if (isPending || !testerId || !testerMBTI) {
+    if (!testerId || !testerMBTI) {
+      router.push(`/login?redirectURI=${encodeURIComponent("/questions")}`);
+      return;
+    }
+
+    if (isPending) {
       return;
     }
 
     startTransition(async () => {
-      const resultId = await getQuestionsTest({
+      const response = await postQuestionsResult({
         testerId,
-        mbti: testerMBTI,
-        answerIdList: Object.values(selectedQuestionIdAnswerIdMap).join(","),
+        prevMbti: testerMBTI,
+        answerId: Object.values(selectedQuestionIdAnswerIdMap).map((id) =>
+          Number(id)
+        ),
       });
-      console.log(
-        "## answerIdList",
-        Object.values(selectedQuestionIdAnswerIdMap).join(",")
-      );
+      const { data, isSuccess, isError } = response ?? {};
+      const { resultId } = data ?? {};
 
-      router.replace(`/result/${resultId}`);
+      if (isSuccess && resultId) {
+        router.replace(`/result/${resultId}`);
+      }
+
+      if (isError) {
+        toast.error(
+          "MBTI 검증에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요."
+        );
+      }
     });
   };
 
@@ -77,6 +93,15 @@ const QuestionsClientPage = ({
 
       <div className="flex flex-col items-center">
         <p className="text-title-sb-22 mb-[3rem] text-white">{content}</p>
+
+        <div className="relative h-[15rem] w-[15rem]">
+          <Image
+            src={imageUrl}
+            alt="mbti question"
+            fill
+            className="object-contain"
+          />
+        </div>
 
         <div className="w-full space-y-[1rem]">
           {answerList?.map(({ id: answerId, content }) => {

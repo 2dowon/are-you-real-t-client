@@ -2,7 +2,7 @@ import { TMbtiType } from "@/utils/constants/meta.const";
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
 
 export interface IQuestion {
-  id: string;
+  id: number;
   content: string;
   answerList: IAnswer[];
   type: TMbtiType;
@@ -11,7 +11,7 @@ export interface IQuestion {
 }
 
 export interface IAnswer {
-  id: string;
+  id: number;
   content: string;
 }
 
