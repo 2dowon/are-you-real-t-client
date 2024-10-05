@@ -8,7 +8,7 @@ interface IQuestionsResultIdResponse {
   prevMbti: string;
   nextMbti: string;
   description: string;
-  // imageUrl: string;
+  imageUrl: string;
   changedQuestions: IChangedQuestion[];
   recommendQuestions: IRecommendedQuestion[];
 }
@@ -50,6 +50,7 @@ export const getQuestionsResultId = async (
       `/questions/result/${resultId}`,
       {
         method: "GET",
+        cache: "no-cache",
       }
     );
 

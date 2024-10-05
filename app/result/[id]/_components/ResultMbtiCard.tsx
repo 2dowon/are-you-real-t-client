@@ -22,7 +22,7 @@ const ResultMbtiCard = ({
       <p className="text-label-sb-16 text-primary">나의 진짜 MBTI</p>
       <p className="text-title-sb-32 mb-[2.4rem] mt-[0.8rem]">{nextMbti}</p>
 
-      <div className="relative h-[15rem] w-[15rem]">
+      <div className="relative h-[18rem] w-[28rem]">
         <Image
           src={imageUrl}
           alt="mbti result"

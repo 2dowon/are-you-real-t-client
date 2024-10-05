@@ -26,11 +26,12 @@ const QuestionDetailAnswerSection = ({
   const queryClient = useQueryClient();
 
   const testerId = useAuthenticationStore((state) => state.testerId);
+  const testerMBTI = useAuthenticationStore((state) => state.testerMBTI);
 
   const [isPending, startTransition] = useTransition();
 
   const handleAnswerClick = (answerId: number) => {
-    if (!testerId) {
+    if (!testerId || !testerMBTI) {
       router.push(
         `/login?redirectURI=${encodeURIComponent(`/community/${questionId}`)}`
       );
@@ -43,9 +44,10 @@ const QuestionDetailAnswerSection = ({
 
     startTransition(async () => {
       const response = await postVote({
-        questionId,
         testerId,
-        answerId: answerId.toString(),
+        questionId: parseInt(questionId),
+        answerId,
+        mbti: testerMBTI,
       });
       const { isSuccess, isError } = response ?? {};
 

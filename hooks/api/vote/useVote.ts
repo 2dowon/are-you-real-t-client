@@ -12,9 +12,10 @@ interface IVoteResponse {
 }
 
 interface IVotePayload {
-  questionId: string;
   testerId: string;
-  answerId: string;
+  questionId: number;
+  answerId: number;
+  mbti: string;
 }
 
 export const postVoteApi = async (payload: IVotePayload) => {

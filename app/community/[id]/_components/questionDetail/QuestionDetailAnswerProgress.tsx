@@ -29,7 +29,7 @@ const QuestionDetailAnswerProgress = ({
               : 0;
 
           return (
-            <div key={type} className="z-10 flex items-center gap-x-[1rem]">
+            <div key={type} className="z-5 flex items-center gap-x-[1rem]">
               {index === 1 && <p className="text-label-r-16">{percentage}%</p>}
               <p className="text-detail-r-20">{tagName}</p>
               {index === 0 && <p className="text-label-r-16">{percentage}%</p>}

@@ -18,6 +18,7 @@ export const customServerAction = async <TResponse>({
   try {
     const response = await apiFunction;
     return { data: response as TResponse, isSuccess: true, isError: false };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return customServerActionError;
   }

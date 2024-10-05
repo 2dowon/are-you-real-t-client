@@ -17,7 +17,7 @@ const ResultPage = async ({ params: { id } }: IResultPageProps) => {
     prevMbti,
     nextMbti,
     description,
-    // imageUrl = "",
+    imageUrl = "",
     changedQuestions,
     recommendQuestions,
   } = result ?? {};
@@ -30,7 +30,7 @@ const ResultPage = async ({ params: { id } }: IResultPageProps) => {
         prevMbti={prevMbti}
         nextMbti={nextMbti}
         description={description}
-        imageUrl={""}
+        imageUrl={imageUrl}
       />
 
       <div className="my-[3.6rem] space-y-[2.3rem]">

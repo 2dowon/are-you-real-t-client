@@ -17,6 +17,7 @@ export const getQuestionsTemp = async () => {
     "/questions/tmp",
     {
       method: "GET",
+      cache: "no-cache",
     }
   );
 

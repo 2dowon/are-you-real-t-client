@@ -10,6 +10,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "fake-enfp.shop",
+      },
+      {
+        protocol: "https",
         hostname: "kr.object.ncloudstorage.com",
       },
     ],

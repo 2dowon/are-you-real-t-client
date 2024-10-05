@@ -7,6 +7,7 @@ export interface FetchRequestConfig extends RequestInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   query?: string | Record<string, any> | URLSearchParams | string[][];
   tags?: string[];
+  cache?: RequestCache | undefined;
 }
 
 export const customFetch = <TResponse>(
@@ -20,6 +21,7 @@ export const customFetch = <TResponse>(
     headers,
     body,
     tags,
+    cache,
     ...extraOptions
   } = fetchRequestConfig;
 
@@ -35,6 +37,7 @@ export const customFetch = <TResponse>(
     body,
     credentials: "same-origin",
     next: { tags }, // Pass tags here
+    cache,
     ...extraOptions,
   })
     .then((response) => response.json())
