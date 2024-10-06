@@ -2,14 +2,15 @@
 
 import { DEFAULT_OG_IMAGE } from "@/utils/constants/metaData.const";
 import { BASE_URL } from "@/utils/constants/url.const";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Kakao from "./icon/Kakao";
 
 const KakaoShareButton = ({ description }: { description: string }) => {
   const pathname = usePathname();
+  const params = useSearchParams();
 
   const handleKakaoShareButtonClick = () => {
-    const shareUrl = `${BASE_URL}/${pathname}}`;
+    const shareUrl = `${BASE_URL}${pathname}?${params.toString()}`;
 
     if (window.Kakao) {
       window.Kakao.Link.sendDefault({
