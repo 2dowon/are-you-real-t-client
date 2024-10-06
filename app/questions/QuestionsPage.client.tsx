@@ -86,6 +86,7 @@ const QuestionsClientPage = ({
 
           <div className="relative mb-[1.6rem] h-[16rem] w-[32rem]">
             <Image
+              key={imageUrl}
               src={imageUrl}
               alt="mbti question"
               fill

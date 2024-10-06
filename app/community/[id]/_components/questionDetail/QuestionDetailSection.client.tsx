@@ -49,6 +49,7 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
       <p className="text-title-sb-22 mb-[2rem]">{content}</p>
       <div className="relative mx-auto mb-[2.4rem] h-[16rem] w-[32rem]">
         <Image
+          key={imageUrl}
           src={imageUrl}
           alt="mbti question"
           fill
