@@ -18,7 +18,7 @@ const ResultRecommendedQuestionsSection = ({
             <Link
               key={`recommended_question_${id}`}
               href={`/community/${id}`}
-              className="flex items-center justify-between rounded-[0.8rem] bg-gray-800 px-[2.4rem] py-[1.6rem]"
+              className="flex items-center justify-between gap-x-[1rem] rounded-[0.8rem] bg-gray-800 px-[2.4rem] py-[1.6rem]"
             >
               <div>
                 <p className="text-primary text-detail-r-16 mb-[0.4rem]">

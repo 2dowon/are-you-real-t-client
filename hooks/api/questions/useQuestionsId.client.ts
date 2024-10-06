@@ -11,11 +11,12 @@ export interface IQuestionDetail
 
 export interface IAnswerDetail extends IAnswer {
   tag: string;
-  countMeta: {
-    total: number;
-    tag1: ITagCountMeta;
-    tag2: ITagCountMeta;
-  } | null;
+  selectCount: number;
+  // countMeta: {
+  //   total: number;
+  //   tag1: ITagCountMeta;
+  //   tag2: ITagCountMeta;
+  // } | null;
 }
 
 export interface ITagCountMeta {

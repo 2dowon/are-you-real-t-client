@@ -3,7 +3,6 @@ import QuestionItem from "./_components/QuestionItem";
 
 const CommunityPage = async () => {
   const questionList = await getQuestions();
-  console.log("## questionList", questionList);
 
   return (
     <div>
@@ -17,9 +16,9 @@ const CommunityPage = async () => {
             return (
               <QuestionItem
                 key={`question_${id}`}
-                postId={Number(id)}
+                questionId={Number(id)}
                 type={type}
-                questionTitle={content}
+                content={content}
                 answerList={answerList}
                 voteCount={voteCount}
                 commentCount={commentCount}

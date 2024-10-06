@@ -2,7 +2,7 @@ import Image from "next/image";
 import LoadingGif from "/public/static/images/loading.gif";
 import LoadingBGImage from "/public/static/images/loading_bg.png";
 
-const Loading = () => {
+const ResultLoading = () => {
   return (
     <div className="pc:max-w-[50rem] relative flex h-screen w-screen flex-col items-center justify-center pb-[10rem]">
       <div className="pc:max-w-[50rem] relative h-[60vh] w-[80vw]">
@@ -33,4 +33,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default ResultLoading;

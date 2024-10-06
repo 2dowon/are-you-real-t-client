@@ -1,7 +1,7 @@
 import { ITagCountMeta } from "@/hooks/api/questions/useQuestionsId.client";
 import { TMbtiType } from "@/utils/constants/meta.const";
 
-const QuestionDetailAnswerProgress = ({
+const QuestionDetailAnswerTagProgress = ({
   isSelected,
   type,
   totalCount,
@@ -65,4 +65,4 @@ const QuestionDetailAnswerProgress = ({
   );
 };
 
-export default QuestionDetailAnswerProgress;
+export default QuestionDetailAnswerTagProgress;

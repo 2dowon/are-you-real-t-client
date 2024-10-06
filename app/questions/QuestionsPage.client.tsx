@@ -2,20 +2,17 @@
 
 import CustomProgress from "@/components/CustomProgress";
 import Caret from "@/components/icon/Caret";
-import { Button } from "@/components/ui/button";
-import { postQuestionsResult } from "@/hooks/api/questions/useQuestionsResult";
 import { IQuestionTemp } from "@/hooks/api/questionsTemp/useQuestionsTemp";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import {
+  useQuestionsStore,
+  useQuestionsStoreActions,
+} from "./store/useQuestionsStore";
 
 const QUESTION_LIST_COUNT = 12;
-
-interface ISelectedQuestionIdAnswerIdMap {
-  [questionId: number]: number;
-}
 
 const QuestionsClientPage = ({
   questionList,
@@ -26,6 +23,11 @@ const QuestionsClientPage = ({
 
   const testerId = useAuthenticationStore((state) => state.testerId);
   const testerMBTI = useAuthenticationStore((state) => state.testerMBTI);
+  const selectedQuestionIdAnswerIdMap = useQuestionsStore(
+    (state) => state.selectedQuestionIdAnswerIdMap
+  );
+  const { setSelectedQuestionIdAnswerIdMap, reset } =
+    useQuestionsStoreActions();
 
   const [currentIndex, setCurrentIndex] = useState(1);
   const {
@@ -35,43 +37,17 @@ const QuestionsClientPage = ({
     answerList,
   } = questionList.at(currentIndex - 1) ?? {};
 
-  const [selectedQuestionIdAnswerIdMap, setSelectedQuestionIdAnswerIdMap] =
-    useState<ISelectedQuestionIdAnswerIdMap>({});
-
-  const [isPending, startTransition] = useTransition();
-
-  const handleLastQuestionClick = () => {
-    if (!testerId || !testerMBTI) {
-      router.push(`/login?redirectURI=${encodeURIComponent("/questions")}`);
-      return;
+  useEffect(() => {
+    if (
+      Object.keys(selectedQuestionIdAnswerIdMap).length === QUESTION_LIST_COUNT
+    ) {
+      router.replace(
+        `/result?testerId=${testerId}&mbti=${testerMBTI}&answerId=${Object.values(
+          selectedQuestionIdAnswerIdMap
+        )}`
+      );
     }
-
-    if (isPending) {
-      return;
-    }
-
-    startTransition(async () => {
-      const response = await postQuestionsResult({
-        testerId,
-        prevMbti: testerMBTI,
-        answerId: Object.values(selectedQuestionIdAnswerIdMap).map((id) =>
-          Number(id)
-        ),
-      });
-      const { data, isSuccess, isError } = response ?? {};
-      const { resultId } = data ?? {};
-
-      if (isSuccess && resultId) {
-        router.replace(`/result/${resultId}`);
-      }
-
-      if (isError) {
-        toast.error(
-          "MBTI 검증에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요."
-        );
-      }
-    });
-  };
+  }, [router, selectedQuestionIdAnswerIdMap, testerId, testerMBTI]);
 
   useEffect(() => {
     if (!testerId || !testerMBTI) {
@@ -79,6 +55,13 @@ const QuestionsClientPage = ({
       return;
     }
   }, [router, testerId, testerMBTI]);
+
+  useEffect(() => {
+    return () => {
+      reset();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!questionId) {
     return null;
@@ -124,10 +107,7 @@ const QuestionsClientPage = ({
                       : "bg-gray-800"
                   }`}
                   onClick={() => {
-                    setSelectedQuestionIdAnswerIdMap((prevAnswers) => ({
-                      ...prevAnswers,
-                      [questionId]: answerId,
-                    }));
+                    setSelectedQuestionIdAnswerIdMap({ questionId, answerId });
 
                     if (currentIndex < QUESTION_LIST_COUNT) {
                       setTimeout(() => {
@@ -155,19 +135,6 @@ const QuestionsClientPage = ({
           </div>
         )}
       </div>
-      {currentIndex === QUESTION_LIST_COUNT && (
-        <Button
-          variant="primary"
-          className="w-full"
-          onClick={handleLastQuestionClick}
-          disabled={
-            Object.values(selectedQuestionIdAnswerIdMap).length <
-            QUESTION_LIST_COUNT
-          }
-        >
-          결과 보기
-        </Button>
-      )}
     </div>
   );
 };

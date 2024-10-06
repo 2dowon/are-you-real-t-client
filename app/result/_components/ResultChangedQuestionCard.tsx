@@ -1,4 +1,4 @@
-import QuestionDetailAnswerProgress from "@/app/community/[id]/_components/questionDetail/QuestionDetailAnswerProgress";
+import QuestionDetailAnswerProgress from "@/app/_components/QuestionDetailAnswerProgress";
 import DoubleCaret from "@/components/icon/DoubleCaret";
 import { IChangedQuestion } from "@/hooks/api/questions/useQuestionsResult";
 
@@ -10,7 +10,7 @@ const ResultChangedQuestionCard = ({
   const { prevType, nextType, title, question } = changedQuestion;
   const isChanged = prevType !== nextType;
 
-  const { type, content, votedAnswerId, answerList } = question;
+  const { content, votedAnswerId, answerList, voteCount } = question;
 
   return (
     <div className="cursor-default">
@@ -28,14 +28,10 @@ const ResultChangedQuestionCard = ({
         <p className="text-title-sb-22 mb-[2rem]">{content}</p>
 
         <div className="space-y-[2rem]">
-          {answerList.map(({ id: answerId, content, countMeta }) => {
-            const { total, tag1, tag2 } = countMeta ?? {};
+          {answerList.map(({ id: answerId, content, selectCount }) => {
+            // TODO: BE에서 countMeta 데이터 넘어오면 그때 처리
+            // const { total, tag1, tag2 } = countMeta ?? {};
             const isSelected = votedAnswerId === answerId;
-
-            // TODO: 확인
-            if (!countMeta) {
-              return null;
-            }
 
             return (
               <div
@@ -51,13 +47,19 @@ const ResultChangedQuestionCard = ({
                 </p>
 
                 <QuestionDetailAnswerProgress
+                  voteCount={voteCount}
+                  selectCount={selectCount}
+                  isSelected={isSelected}
+                  className="!h-[4rem] !bg-black"
+                />
+                {/* <QuestionDetailAnswerTagProgress
                   isSelected={isSelected}
                   type={type}
                   totalCount={total!}
                   tag1={tag1!}
                   tag2={tag2!}
                   className="!h-[4rem] !bg-black"
-                />
+                /> */}
               </div>
             );
           })}

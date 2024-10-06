@@ -5,16 +5,16 @@ import { mbtiTypeMetaMap, TMbtiType } from "@/utils/constants/meta.const";
 import Link from "next/link";
 
 const QuestionItem = ({
-  postId,
+  questionId,
   type,
-  questionTitle,
+  content,
   answerList,
   voteCount,
   commentCount,
 }: {
-  postId: number;
+  questionId: number;
   type: TMbtiType;
-  questionTitle: string;
+  content: string;
   answerList: IAnswer[];
   voteCount: number;
   commentCount: number;
@@ -22,11 +22,11 @@ const QuestionItem = ({
   const { typeText } = mbtiTypeMetaMap[type];
 
   return (
-    <Link href={`/community/${postId}`}>
+    <Link href={`/community/${questionId}`}>
       <div className="rounded-[1.6rem] bg-gray-900 px-[2.3rem] py-[2.5rem]">
         <p className="text-primary text-label-sb-16 mb-[1rem]">{typeText}</p>
 
-        <p className="text-title-sb-22">{questionTitle}</p>
+        <p className="text-title-sb-22">{content}</p>
 
         <div className="my-[2.4rem] space-y-[1.2rem]">
           {answerList.map(({ id, content }) => {

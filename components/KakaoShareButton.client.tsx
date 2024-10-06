@@ -2,24 +2,21 @@
 
 import { DEFAULT_OG_IMAGE } from "@/utils/constants/metaData.const";
 import { BASE_URL } from "@/utils/constants/url.const";
+import { usePathname } from "next/navigation";
 import Kakao from "./icon/Kakao";
 
-const KakaoShareButton = ({
-  resultId,
-  description,
-}: {
-  resultId: string;
-  description: string;
-}) => {
+const KakaoShareButton = ({ description }: { description: string }) => {
+  const pathname = usePathname();
+
   const handleKakaoShareButtonClick = () => {
-    const shareUrl = `${BASE_URL}/result/${resultId}`;
+    const shareUrl = `${BASE_URL}/${pathname}}`;
 
     if (window.Kakao) {
       window.Kakao.Link.sendDefault({
         objectType: "feed",
         content: {
           title: "[검증 결과]",
-          description,
+          description: description.replace(/\\n/g, " "),
           imageWidth: 800,
           imageHeight: 400,
           imageUrl: DEFAULT_OG_IMAGE,

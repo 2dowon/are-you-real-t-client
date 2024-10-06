@@ -31,17 +31,19 @@ const ResultMbtiCard = ({
         />
       </div>
 
-      <p className="text-detail-r-16 my-[3.2rem] text-center">{description}</p>
+      <p className="text-detail-r-16 my-[3.2rem] whitespace-pre-wrap text-center">
+        {description.replace(/\\n/g, "\n")}
+      </p>
 
       <div className="flex w-full gap-x-[0.8rem]">
-        {mbtiResultList.map((mbtiResult) => {
+        {mbtiResultList.map((mbtiResult, index) => {
           const prevType = mbtiResult[0];
           const nextType = mbtiResult[1];
 
           const isChanged = prevType !== nextType;
           return (
             <div
-              key={`mbti_result_${prevType}_${nextType}`}
+              key={`mbti_result_${prevType}_${nextType}_${index}`}
               className={`flex flex-1 items-center justify-center rounded-[0.4rem] py-[0.5rem] ${
                 isChanged ? "bg-primary" : "bg-gray-800 text-gray-200"
               }`}

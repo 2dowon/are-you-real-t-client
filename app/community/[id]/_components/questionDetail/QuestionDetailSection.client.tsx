@@ -19,7 +19,7 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
   });
 
   const {
-    type,
+    // type,
     content = "",
     imageUrl = "",
     answerList = [],
@@ -57,7 +57,8 @@ const QuestionDetailSection = ({ questionId }: { questionId: string }) => {
       </div>
 
       <QuestionDetailAnswerSection
-        type={type}
+        // type={type}
+        voteCount={voteCount}
         votedAnswerId={votedAnswerId}
         answerList={answerList}
         questionId={questionId}

@@ -1,24 +1,25 @@
 "use client";
 
+import QuestionDetailAnswerProgress from "@/app/_components/QuestionDetailAnswerProgress";
 import { Button } from "@/components/ui/button";
 import { IAnswerDetail } from "@/hooks/api/questions/useQuestionsId.client";
 import { postVote } from "@/hooks/api/vote/useVote";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
-import { TMbtiType } from "@/utils/constants/meta.const";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { toast } from "sonner";
-import QuestionDetailAnswerProgress from "./QuestionDetailAnswerProgress";
 
 const QuestionDetailAnswerSection = ({
   questionId,
-  type,
+  // type,
+  voteCount,
   votedAnswerId,
   answerList,
 }: {
   questionId: string;
-  type: TMbtiType;
+  // type: TMbtiType;
+  voteCount: number;
   votedAnswerId: number | null;
   answerList: IAnswerDetail[];
 }) => {
@@ -62,8 +63,9 @@ const QuestionDetailAnswerSection = ({
 
   return (
     <div className="space-y-[3rem]">
-      {answerList.map(({ id: answerId, content, countMeta }) => {
-        const { total, tag1, tag2 } = countMeta ?? {};
+      {answerList.map(({ id: answerId, content, selectCount }) => {
+        // TODO: BE에서 countMeta 데이터 넘어오면 그때 처리
+        // const { total, tag1, tag2 } = countMeta ?? {};
         const isSelected = votedAnswerId === answerId;
 
         return (
@@ -78,19 +80,24 @@ const QuestionDetailAnswerSection = ({
             >
               <span>{content}</span>
               {votedAnswerId && (
-                <span className="ml-[0.5rem]">({total}명)</span>
+                <span className="ml-[0.5rem]">({selectCount}명)</span>
               )}
             </div>
 
             {votedAnswerId ? (
               <QuestionDetailAnswerProgress
+                voteCount={voteCount}
+                selectCount={selectCount}
                 isSelected={isSelected}
-                type={type}
-                totalCount={total!}
-                tag1={tag1!}
-                tag2={tag2!}
               />
             ) : (
+              // <QuestionDetailAnswerTagProgress
+              //   isSelected={isSelected}
+              //   type={type}
+              //   totalCount={total!}
+              //   tag1={tag1!}
+              //   tag2={tag2!}
+              // />
               <Button
                 variant="gray"
                 size="md"

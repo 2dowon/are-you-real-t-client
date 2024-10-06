@@ -1,4 +1,5 @@
 import { TMbtiType } from "@/utils/constants/meta.const";
+import { TEN_MINUTE_IN_SECOND } from "@/utils/constants/number.const";
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
 
 export interface IQuestion {
@@ -21,6 +22,7 @@ export const getQuestions = async () => {
     "/questions",
     {
       method: "GET",
+      next: { revalidate: TEN_MINUTE_IN_SECOND },
     }
   );
 
