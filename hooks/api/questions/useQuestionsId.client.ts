@@ -1,5 +1,4 @@
 import { IAnswer } from "@/hooks/api/questions/useQuestions";
-import { TEN_MINUTE_IN_SECOND } from "@/utils/constants/number.const";
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
 import { useQuery } from "@tanstack/react-query";
 import { IQuestion } from "./useQuestions";
@@ -39,7 +38,6 @@ export const getQuestionsId = async (params: IQuestionsIdParams) => {
     `/questions/${questionId}?testerId=${testerId}`,
     {
       method: "GET",
-      next: { revalidate: TEN_MINUTE_IN_SECOND },
     }
   );
 

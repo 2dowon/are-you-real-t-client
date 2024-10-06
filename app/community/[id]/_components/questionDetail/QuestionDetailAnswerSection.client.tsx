@@ -2,7 +2,10 @@
 
 import QuestionDetailAnswerProgress from "@/app/_components/QuestionDetailAnswerProgress";
 import { Button } from "@/components/ui/button";
-import { IAnswerDetail } from "@/hooks/api/questions/useQuestionsId.client";
+import {
+  IAnswerDetail,
+  questionsIdApiQueryKey,
+} from "@/hooks/api/questions/useQuestionsId.client";
 import { postVote } from "@/hooks/api/vote/useVote";
 import { useAuthenticationStore } from "@/store/useAuthenticationStore";
 import { useQueryClient } from "@tanstack/react-query";
@@ -53,7 +56,7 @@ const QuestionDetailAnswerSection = ({
       const { isSuccess, isError } = response ?? {};
 
       if (isSuccess) {
-        queryClient.invalidateQueries({ queryKey: ["getQuestionsIdApi"] });
+        queryClient.invalidateQueries({ queryKey: [questionsIdApiQueryKey] });
       }
       if (isError) {
         toast.error("투표에 오류가 발생했습니다.\n잠시 후 다시 시도해 주세요.");
