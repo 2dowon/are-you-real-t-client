@@ -14,6 +14,9 @@ const CommentInput = ({ questionId }: { questionId: string }) => {
 
   const testerId = useAuthenticationStore((state) => state.testerId);
   const testerMBTI = useAuthenticationStore((state) => state.testerMBTI);
+  const testerNextMBTI = useAuthenticationStore(
+    (state) => state.testerNextMBTI
+  );
 
   const [textareaValue, setTextareaValue] = useState("");
 
@@ -35,7 +38,7 @@ const CommentInput = ({ questionId }: { questionId: string }) => {
       const response = await postComment({
         questionId: parseInt(questionId),
         testerId,
-        mbti: testerMBTI,
+        mbti: testerNextMBTI ?? testerMBTI,
         content: textareaValue,
       });
       const { isSuccess, isError } = response ?? {};

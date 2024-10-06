@@ -4,8 +4,10 @@ import Replay from "@/components/icon/Replay";
 import KakaoShareButton from "@/components/KakaoShareButton.client";
 import { Button } from "@/components/ui/button";
 import { usePostQuestionsResult } from "@/hooks/api/questions/useQuestionResult.client";
+import { useAuthenticationStoreActions } from "@/store/useAuthenticationStore";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import ResultChangedQuestionCard from "./_components/ResultChangedQuestionCard";
 import ResultLoading from "./_components/ResultLoading";
 import ResultMbtiCard from "./_components/ResultMbtiCard";
@@ -17,6 +19,8 @@ const ResultClientPage = () => {
   const mbti = params.get("mbti");
   const answerId = params.get("answerId");
   const answerIdList = answerId ? answerId.split(",").map(Number) : [];
+
+  const { setTesterNextMBTI } = useAuthenticationStoreActions();
 
   const { data: result, isLoading } = usePostQuestionsResult({
     payload: {
@@ -35,6 +39,11 @@ const ResultClientPage = () => {
     changedQuestions = [],
     recommendQuestions = [],
   } = result ?? {};
+
+  useEffect(() => {
+    setTesterNextMBTI(nextMbti);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nextMbti]);
 
   if (isLoading) {
     return <ResultLoading />;

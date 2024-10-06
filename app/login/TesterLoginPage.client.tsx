@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuthenticationStoreActions } from "@/store/useAuthenticationStore";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type TEnergyType = "E" | "I";
@@ -16,7 +16,7 @@ const TesterLoginPage = () => {
   const params = useSearchParams();
   const redirectURI = params.get("redirectURI");
 
-  const { setTesterMBTI, setTesterId } = useAuthenticationStoreActions();
+  const { setTesterMBTI, setTesterId, reset } = useAuthenticationStoreActions();
 
   const [energyType, setEnergyType] = useState<TEnergyType | null>(null);
   const [informationType, setInformationType] =
@@ -36,6 +36,11 @@ const TesterLoginPage = () => {
       router.replace(redirectURI);
     }
   };
+
+  useEffect(() => {
+    reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
