@@ -1,6 +1,5 @@
 "use server";
 
-import { TEN_MINUTE_IN_SECOND } from "@/utils/constants/number.const";
 import { areYouRealTServiceServerFetchInstance } from "@/utils/fetchInstance/server";
 import { revalidateTag } from "next/cache";
 
@@ -32,7 +31,6 @@ export const getComments = async (params: ICommentsParams) => {
         method: "GET",
         query: { questionId },
         tags: [getCommentsApiTagKey],
-        next: { revalidate: TEN_MINUTE_IN_SECOND },
       }
     );
 
