@@ -4,7 +4,7 @@ export const mbtiTypeMetaMap: {
   [key in TMbtiType]: { typeList: string[]; typeText: string };
 } = {
   energy: { typeList: ["I", "E"], typeText: "I/E" },
-  information: { typeList: ["S", "N"], typeText: "S/N" },
-  decision: { typeList: ["T", "F"], typeText: "T/F" },
-  lifeStyle: { typeList: ["J", "P"], typeText: "J/P" },
+  information: { typeList: ["N", "S"], typeText: "N/S" },
+  decision: { typeList: ["F", "T"], typeText: "F/T" },
+  lifeStyle: { typeList: ["P", "J"], typeText: "P/J" },
 };
