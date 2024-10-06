@@ -1,6 +1,6 @@
 import QuestionDetailAnswerProgress from "@/app/_components/QuestionDetailAnswerProgress";
 import DoubleCaret from "@/components/icon/DoubleCaret";
-import { IChangedQuestion } from "@/hooks/api/questions/useQuestionsResult";
+import { IChangedQuestion } from "@/hooks/api/questions/useQuestionResult.client";
 
 const ResultChangedQuestionCard = ({
   changedQuestion,

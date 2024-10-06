@@ -1,5 +1,5 @@
 import Caret from "@/components/icon/Caret";
-import { IRecommendedQuestion } from "@/hooks/api/questions/useQuestionsResult";
+import { IRecommendedQuestion } from "@/hooks/api/questions/useQuestionResult.client";
 import { mbtiTypeMetaMap } from "@/utils/constants/meta.const";
 import Link from "next/link";
 
