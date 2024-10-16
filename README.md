@@ -35,6 +35,7 @@
 
 ## 기술 스택
 
+<div>
 <img alt="typescript" src="https://img.shields.io/badge/typescript-3178C6.svg?&style=for-the-badge&logo=typescript&logoColor=white" />
 <img alt="react" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 <img alt="react-query" src="https://img.shields.io/badge/ReactQuery-FF4154.svg?&style=for-the-badge&logo=ReactQuery&logoColor=white" />
@@ -42,6 +43,7 @@
 <img alt="vercel" src="https://img.shields.io/badge/Vercel-000000.svg?&style=for-the-badge&logo=vercel&logoColor=white" />
 <img alt="tailwindCss" src="https://img.shields.io/badge/TailwindCss-06B6D4.svg?&style=for-the-badge&logo=TailwindCss&logoColor=white" />
 <img alt="pnpm" src="https://img.shields.io/badge/Pnpm-2c8ebb.svg?&style=for-the-badge&logo=pnpm&logoColor=white" />
+</div>
 
 1. `TypeScript`을 사용하여 코드 작성시 타입의 안정성을 높이고, 자동완성 및 타입 추론 기능을 통해 더 나은 개발자 경험(DX)을 중요시했습니다.
 2. `React`을 사용함으로써 React에 특화된 프레임워크인 Next.js를 사용할 수 있었습니다.
