@@ -77,7 +77,7 @@ pnpm run dev
 
 <p align="center">
   <a href="https://bside.best/potenday">
-    <img src="https://img.notionusercontent.com/s3/prod-files-secure%2F18b15060-3725-484f-806b-77744900d59c%2F44be524e-ff7e-4280-aaaf-0bc795263bd9%2FFrame_34799.png/size/w=2000?exp=1729086923&sig=gMwZaXDXfTenQaQ7g5iKPT1ucMceBtRAIePFbRSYcZI" width="100%" >
+    <img src="./public/static/images/readme/potenday.webp" width="800" alt="potenday">
   </a>
 </p>
 
